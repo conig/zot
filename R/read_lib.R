@@ -60,6 +60,6 @@ note <- function(path = NULL, json = NULL){
   rmarkdown::render(system.file("zotero_notes.Rmd", package = "zotnote"),
                     output_file = path,
                     quiet = T)
-  shell.exec(path)
+  system2("open",path)
 
 }

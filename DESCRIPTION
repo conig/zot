@@ -1,0 +1,21 @@
+Package: zot
+Title: Formats zotero notes in a datatable
+Version: 0.0.0.1
+Authors@R: 
+    person(given = "James",
+           family = "Conigrave",
+           role = c("aut", "cre"),
+           email = "james@conigrave.com",
+           comment = c(ORCID = "0000-0002-8816-6229"))
+Description: Users can store a BetterBibTex debug JSON copy of their library in this package. A html search tool will display all notes in an easy to search format. 
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Imports: 
+    DT,
+    jsonlite,
+    rmarkdown,
+    stringr,
+    tibble

@@ -1,0 +1,33 @@
+---
+title: "`r title`"
+date: "`r date `"
+output: 
+  html_document:
+    css: style.css
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = F)
+```
+
+```{r echo=F}
+  dt <- DT::datatable(lib,
+    filter = "top",
+    editable = T,
+    escape = F,
+    plugins = c("ellipsis"),
+    options = list( searchHighlight = FALSE,
+                    keys = TRUE,
+      columnDefs = list(
+        list(width = "4em", targets = c(0), render = DT::JS("$.fn.dataTable.render.ellipsis(10, false)")),
+         list(width = "4em", targets = c(1)),
+          list(width = "20em", targets = c(2)),
+          list(width = "10em", targets = c(3)),
+         list(width = "15em", targets = c(4)),
+        list(width = "40em", targets = c(5))
+      ),
+      pageLength = 10
+    ),
+    rownames = F
+  )
+  DT::formatStyle(dt, columns = seq_len(length(colnames(lib))), fontSize = "95%")
+```

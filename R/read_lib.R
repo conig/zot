@@ -43,14 +43,14 @@ get_notes <- function(n){
   paste(n$note[[1]])
 }
 
-#' notes
+#' note
 #'
 #' Create zotero notes and open them.
 #' @param path path to destination file.
 #' @param json source json
 #' @export
 
-notes <- function(path = NULL, json = NULL){
+note <- function(path = NULL, json = NULL){
   if(is.null(json)) json <- system.file("My Library.json", package = "zotnote")
   lib <- read_library(json)
   date <- Sys.Date()

@@ -1,4 +1,10 @@
 
+# Overview
+
+zot formats your Zotero library into a searchable table. Zot builds upon
+BetterBibTex which ensures that your notes and references are always up
+to date.
+
 # Installation
 
 ## R package
@@ -40,4 +46,4 @@ rendered.
 zot::note()
 ```
 
-<img src="static/img/table_view.png" width="1391" />
+<img src="static/img/table_view.png" width="1113" />

@@ -34,7 +34,7 @@ To use this package, an automatic export from Zotero needs to be set up.
 
 **3. Save the JSON to zot’s directory (wherever R installed it)**
 
-<img src="static/img/directory.png" width="601" />
+<img src="static/img/directory.png" width="590" />
 
 # Usage
 

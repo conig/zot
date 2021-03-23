@@ -52,6 +52,10 @@ get_notes <- function(n){
 
 note <- function(path = NULL, json = NULL){
   if(is.null(json)) json <- system.file("My Library.json", package = "zot")
+  if(json == ""){
+    folder_path <- system.file(package = "zot")
+    stop("I couldn't find 'My Library.json' at ", folder_path)
+  }
   lib <- read_library(json)
   date <- Sys.Date()
   title = "My library"

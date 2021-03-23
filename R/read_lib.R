@@ -51,13 +51,13 @@ get_notes <- function(n){
 #' @export
 
 note <- function(path = NULL, json = NULL){
-  if(is.null(json)) json <- system.file("My Library.json", package = "zotnote")
+  if(is.null(json)) json <- system.file("My Library.json", package = "zot")
   lib <- read_library(json)
   date <- Sys.Date()
   title = "My library"
   if(is.null(path)) path <- tempfile(fileext = ".html")
 
-  rmarkdown::render(system.file("zotero_notes.Rmd", package = "zotnote"),
+  rmarkdown::render(system.file("zotero_notes.Rmd", package = "zot"),
                     output_file = path,
                     quiet = T)
   system2("open",path)

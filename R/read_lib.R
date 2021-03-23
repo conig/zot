@@ -15,7 +15,7 @@ read_library <- function(path){
   x$note[x$note == "character(0)"] <- ""
 
   out <- tibble::tibble(x[,c("citekey","year", "title", "authors", "journal", "note")])
-  out[order(-out$year, out$authors),]
+  dplyr::arrange(out, desc(year), authors)
 }
 
 

@@ -1,6 +1,6 @@
 Package: zot
 Title: Formats zotero notes in a datatable
-Version: 0.0.0.1
+Version: 0.0.0.2
 Authors@R: 
     person(given = "James",
            family = "Conigrave",

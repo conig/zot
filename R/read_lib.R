@@ -3,8 +3,6 @@
 #' read betterbibtex json library
 #' @param path path to better biblatex debug json file
 
-# path = "C:/Users/james/Desktop/Exported Items.json"
-
 read_library <- function(path){
   x <- jsonlite::fromJSON(path)$items
   x$journal <- x$publicationTitle
@@ -40,7 +38,7 @@ get_author <- function(a){
 }
 
 get_notes <- function(n){
-  paste(n$note[[1]])
+  paste(n$note, collapse = "\n")
 }
 
 #' note
@@ -57,7 +55,7 @@ note <- function(path = NULL, json = NULL){
     stop("I couldn't find 'My Library.json' at ", folder_path,"/")
   }
   lib <- read_library(json)
-  date <- Sys.Date()
+  date <- paste0("Updated: ", format(file.info(json)$atime, format = "%y-%m-%d, %I:%M%p"))
   title = "My library"
   if(is.null(path)) path <- tempfile(fileext = ".html")
 

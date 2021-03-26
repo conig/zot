@@ -1,12 +1,17 @@
 ---
 title: "`r title`"
 date: "`r date `"
-output: 
-  html_document:
-    css: style.css
+output: html_document
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = F)
+```
+
+```{css echo=FALSE}
+body .main-container {
+max-width: 100em;
+}
+
 ```
 
 ```{r echo=F}

@@ -1,3 +1,16 @@
+#' zot_year
+#'
+#' Extract year from zotero free-text dates
+#' @param x zot date string
+
+zot_year <- function(x){
+  as.numeric(sapply(stringr::str_extract_all(x, "\\d{4}"), function(x)
+    if (length(x) == 0)
+      NA
+    else
+      x[[1]]))
+}
+
 #' read_library
 #'
 #' read betterbibtex json library
@@ -8,12 +21,8 @@ read_library <- function(path){
   x$journal <- x$publicationTitle
   x$authors <- as.character(sapply(x$creators, get_author))
   x$authors[x$authors == "NULL"] <- ""
-  x$year <-
-    as.numeric(sapply(stringr::str_extract_all(x$date, "\\d{4}"), function(x)
-      if (length(x) == 0)
-        NA
-      else
-        x[[1]]))
+  x$year <- zot_year(x$date)
+
   x$note <- as.character(sapply(x$notes, get_notes))
   x$note[x$note == "character(0)"] <- ""
 

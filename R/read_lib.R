@@ -8,7 +8,12 @@ read_library <- function(path){
   x$journal <- x$publicationTitle
   x$authors <- as.character(sapply(x$creators, get_author))
   x$authors[x$authors == "NULL"] <- ""
-  x$year <- as.numeric(sapply(stringr::str_extract_all(x$date, "\\d{4}"), function(x) x[[1]]))
+  x$year <-
+    as.numeric(sapply(stringr::str_extract_all(x$date, "\\d{4}"), function(x)
+      if (length(x) == 0)
+        NA
+      else
+        x[[1]]))
   x$note <- as.character(sapply(x$notes, get_notes))
   x$note[x$note == "character(0)"] <- ""
 

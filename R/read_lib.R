@@ -11,6 +11,13 @@ zot_year <- function(x){
       x[[1]]))
 }
 
+get_pdf_path <- function(x){
+  ret <- x$path[grepl("\\.pdf$", x$path)]
+  if(length(ret) == 0) return(NA)
+  ret[[1]]
+}
+
+
 #' read_library
 #'
 #' read betterbibtex json library
@@ -25,9 +32,15 @@ read_library <- function(path){
 
   x$note <- as.character(sapply(x$notes, get_notes))
   x$note[x$note == "character(0)"] <- ""
+  x$pdf <- unlist(lapply(x$attachments, get_pdf_path))
+
+  y <- x[!is.na(x$pdf), ]
+
+  x$title[!is.na(x$pdf)] = glue::glue('<a href="{y$pdf}" target="_blank">{y$title}</a>')
 
   out <- tibble::tibble(x[,c("citekey","year", "title", "authors", "journal", "note")])
-  out[order(-out$year, out$authors),]
+  out <- out[order(-out$year, out$authors),]
+  out
 }
 
 
@@ -69,7 +82,7 @@ note <- function(path = NULL, json = NULL){
     stop("I couldn't find 'My Library.json' at ", folder_path,"/")
   }
   lib <- read_library(json)
-  date <- paste0("Updated: ", format(file.info(json)$atime, format = "%y-%m-%d, %I:%M%p"))
+  date <- paste0("Updated: ", format(file.info(json)$mtime, format = "%y-%m-%d, %I:%M%p"))
   title = "My library"
   if(is.null(path)) path <- tempfile(fileext = ".html")
 

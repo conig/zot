@@ -25,16 +25,16 @@ To use this package, an automatic export from Zotero needs to be set up.
 
 **1. Right click library, and click “Export Library”**
 
-<img src="static/img/library_export.png" width="322" />
+![](static/img/library_export.png)<!-- -->
 
-**2. Set format to BetterBibTex debug JSON, select ‘Export Notes’, and
-‘Keep updated’**
+**2. Set format to BetterBibTex JSON, select ‘Export Notes’, and ‘Keep
+updated’**
 
-<img src="static/img/auto_export.png" width="308" />
+![](static/img/auto_export.png)<!-- -->
 
 **3. Save the JSON to zot’s directory (wherever R installed it)**
 
-<img src="static/img/directory.png" width="590" />
+![](static/img/directory.png)<!-- -->
 
 # Usage
 
@@ -46,4 +46,4 @@ rendered.
 zot::note()
 ```
 
-<img src="static/img/table_view.png" width="1113" />
+![](static/img/table_view.gif)<!-- -->

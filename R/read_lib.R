@@ -81,6 +81,8 @@ note <- function(path = NULL, json = NULL){
     folder_path <- system.file(package = "zot")
     stop("I couldn't find 'My Library.json' at ", folder_path,"/")
   }
+  check_setup(json)
+
   lib <- read_library(json)
   date <- paste0("Updated: ", format(file.info(json)$mtime, format = "%y-%m-%d, %I:%M%p"))
   title = "My library"
@@ -90,5 +92,23 @@ note <- function(path = NULL, json = NULL){
                     output_file = path,
                     quiet = T)
   system2("open",path)
+}
+
+#' check_setup
+#'
+#' Check if zot is set up correctly
+#' @export
+
+check_setup <- function(path = NULL){
+  if(is.null(path)) path <-
+    file.path(system.file("", package = "zot"), "My Library.json")
+
+  if(!file.exists(path)){
+    stop("My Library.json was not found. Please save a BetterBibTeX JSON file to location:\n ", path)
+  }
+
+  item <- jsonlite::read_json(path)
+  if(item$config$label != "BetterBibTeX JSON") stop("My Library.json must be of class BetterBibTex JSON. The supported file is ", item$config$label)
+  TRUE
 
 }

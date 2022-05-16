@@ -4,13 +4,15 @@ date: "`r date `"
 output: html_document
 ---
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = F)
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE)
 ```
 
 ```{css echo=FALSE}
 body .main-container {
 max-width: 100em;
 }
+
 
 ```
 
